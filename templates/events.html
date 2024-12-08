@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2>Events</h2>
+    <a href="{{ url_for('event.add_event') }}" class="button">Add Event</a>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Type</th>
+        </tr>
+        {% for event in events %}
+        <tr>
+            <td>{{ event.name }}</td>
+            <td>{{ event.date }}</td>
+            <td>{{ event.type }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

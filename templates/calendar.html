@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="calendar">
+    <h2>Calendar - {{ current_month }}/{{ current_year }}</h2>
+    <a href="{{ url_for('add_event') }}" class="button">Add Event</a>
+    
+    <table class="calendar-table">
+        <thead>
+            <tr>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+                <th>Sun</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for week in calendar %}
+            <tr>
+                {% for day in week %}
+                <td>
+                    {% if day != 0 %}
+                        {{ day }}
+                        {% for event in events %}
+                            {% if event.date.endswith('{:02d}'.format(day)) %}
+                                <div class="event">{{ event.name }}</div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

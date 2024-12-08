@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2>Performance Reviews</h2>
+    <a href="{{ url_for('review.add_review') }}" class="button">Add Review</a>
+    {% for employee in employees %}
+    <div class="review-section">
+        <h3>{{ employee.first_name }} {{ employee.last_name }}</h3>
+        {% if employee.reviews %}
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Score</th>
+                <th>Feedback</th>
+            </tr>
+            {% for review in employee.reviews %}
+            <tr>
+                <td>{{ review.date }}</td>
+                <td>{{ review.score }}/10</td>
+                <td>{{ review.feedback }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>No reviews yet</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

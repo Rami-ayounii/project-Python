@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2>Add Review</h2>
+    <form method="POST">
+        <div class="form-group">
+            <select name="employee_id" required>
+                {% for employee in employees %}
+                <option value="{{ employee.id }}">{{ employee.first_name }} {{ employee.last_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="date" name="date" required>
+        </div>
+        <div class="form-group">
+            <input type="number" name="score" min="1" max="10" placeholder="Score (1-10)" required>
+        </div>
+        <div class="form-group">
+            <textarea name="feedback" placeholder="Feedback" required></textarea>
+        </div>
+        <button type="submit" class="button">Add Review</button>
+    </form>
+</div>
+{% endblock %}

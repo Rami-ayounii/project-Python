@@ -22,7 +22,7 @@ class Database:
     def get_all_events(self):
         return self.events
     
-    def add_review(self, employee_id,review):
+    def add_performance_review(self, employee_id,review):
         employee = self.get_employee(employee_id)
         if employee:
             employee.reviews.append(review)

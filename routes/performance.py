@@ -19,5 +19,6 @@ def add_performance():
         )
         if db.add_performance_review(employee_id, review):
             flash('Performance evaluation added successfully!')
+            print(review)
             return redirect(url_for('performance.performance'))
     return render_template('add_performance.html', employees=db.get_all_employees())

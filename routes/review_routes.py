@@ -16,7 +16,8 @@ def add_review():
             int(request.form['score']),
             request.form['feedback']
         )
-        db.add_review(int(request.form['employee_id']),review)
+        db.add_performance_review(int(request.form['employee_id']),review)
         flash('Review added successfully')
+        print(review)
         return redirect(url_for('review.reviews'))
     return render_template('add_review.html', employees=db.get_all_employees())
